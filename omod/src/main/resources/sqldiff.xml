@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqldiff PUBLIC "-//OpenMRS//DTD OpenMRS SQL Diff Config 1.0//EN" "http://resources.openmrs.org/doctype/sqldiff-1.0.dtd">
+
+<sqldiff version="1.0">
+	<help>
+		USE:
+			The diffs are ordered by data model version number.
+			The script can be run in a top down fashion and is
+			expected to not fail or overwrite old data
+		
+		EXPECT:
+			- "use business-database-name;" was called prior to
+			   calling this script
+	</help>
+
+
+	<diff>
+		<version>0.0.1</version>
+		<author>Ghanshyam</author>
+		<date>28 March 2014</date>
+		<description>Create a OT procedure table</description>
+		<sql>
+			CREATE TABLE IF NOT EXISTS `ot_minor` (
+			  `minorot_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `status` varchar(30) DEFAULT NULL,
+			  `patient_id` int(11) NOT NULL,
+			  `procedure_id` int(11) NOT NULL,
+			  `diagnosis` varchar(400) NOT NULL,
+			  `ot_schedule_date` datetime NOT NULL,
+			  `encounter_id` int(11) NOT NULL,
+			  `opd_order_id` int(11) NOT NULL,
+			  PRIMARY KEY (`minorot_id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;	
+			
+			CREATE TABLE IF NOT EXISTS `ot_major` (
+			  `majorot_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `status` varchar(30) DEFAULT NULL,
+			  `patient_id` int(11) NOT NULL,
+			  `procedure_id` int(11) NOT NULL,
+			  `diagnosis` varchar(400) NOT NULL,
+			  `ot_schedule_date` datetime NOT NULL,
+			  `encounter_id` int(11) NOT NULL,
+			  `opd_order_id` int(11) NOT NULL,
+			  PRIMARY KEY (`majorot_id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;			
+		</sql>
+	</diff>
+
+	
+</sqldiff>
